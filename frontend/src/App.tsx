@@ -6,16 +6,22 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import OrganismusListPage from './pages/OrganismusListPage'
 import OrganismusDetailPage from './pages/OrganismusDetailPage'
 import AboutPage from './pages/AboutPage'
+import { useState, useCallback } from 'react'
 
 export default function App() {
+  const [mobileNavOpen, setMobileNavOpen] = useState(false)
+  const openMenu = useCallback(() => setMobileNavOpen(true), [])
+  const closeMenu = useCallback(() => setMobileNavOpen(false), [])
+  const toggleMenu = useCallback(() => setMobileNavOpen(v => !v), [])
+
   return (
-    <div className="layout">
+    <div className={`layout${mobileNavOpen ? ' mobile-nav-open' : ''}`}>
       <header className="header">
-        <Header />
+        <Header onToggleMenu={toggleMenu} />
       </header>
 
-      <aside className="left-nav">
-        <LeftNav />
+      <aside className={`left-nav${mobileNavOpen ? ' open' : ''}`}>
+        <LeftNav mobileOpen={mobileNavOpen} onClose={closeMenu} />
       </aside>
 
       <main className="content">
