@@ -1,0 +1,27 @@
+# Node
+frontend/node_modules/
+frontend/dist/
+npm-debug.log*
+
+# Python
+backend/.venv/
+backend/__pycache__/
+backend/*.pyc
+backend/db.sqlite3
+
+# Django media/static (dev)
+backend/media/
+backend/staticfiles/
+
+# Env files
+*.env
+.env
+
+# OS/Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Docker
+**/.dockerignore
